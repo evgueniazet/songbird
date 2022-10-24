@@ -8,9 +8,11 @@ let headerInfoTime = document.createElement('span');
 let sound = document.createElement('button');
 headerInfo.appendChild(sound);
 sound.classList.add('header__info_sound');
-sound.innerText = 'Off/On sound';
+sound.innerText = 'Off sound';
 
 let info = document.createElement('div');
+let saundStatus = true;
+let timeStop = true;
 
 
 let buttonLeft = document.createElement('button');
@@ -57,13 +59,14 @@ const emptyCell = 16;
 let sec = 0;
 let min = 0;
 let t;
+let isStopped = false;
 
 
 
 
 
 
-
+go
 
 document.body.append(wrapper);
 
@@ -74,7 +77,7 @@ header.appendChild(headerInfo);
 headerInfo.appendChild(headerInfoMoves);
 headerInfoMoves.append('Moves : 0');
 headerInfo.appendChild(headerInfoTime);
-headerInfoTime.append('Time : 0');
+headerInfoTime.append('Time : 00:00');
 
 headerMenu.appendChild(buttonLeftCenter);
 buttonLeftCenter.appendChild(buttonLeftCenterText);
@@ -101,7 +104,6 @@ footer.appendChild(footerSettingsSize);
 wrapper.classList.add('wrapper');
 header.classList.add('header');
 headerMenu.classList.add('header__menu');
-// buttonLeft.classList.add('header__menu_button-left');
 buttonLeftCenter.classList.add('header__menu_button-left-center');
 buttonRightCenter.classList.add('header__menu_button-right-center');
 buttonRight.classList.add('header__menu_button-right');
@@ -117,7 +119,7 @@ footerSettingsSignature.classList.add('footer__settings_signature');
 footerSettingsSize.classList.add('footer__settings_size');
 let counterMoves = 0;
 
-shuffleMatrix(cellMatrix);
+// shuffleMatrix(cellMatrix);
 
 let audio = new Audio();
 audio.preload = 'auto';
@@ -178,9 +180,15 @@ const renderCell = (event) => {
             timer();
         }
 
+        if (isStopped) {
+            timer();
+            isStopped = !isStopped; 
+        }
+
         setTimeout(() => {
             if (isWon(cellMatrix)) {
                 headerInfoTime.textContent = + (min > 9 ? min : "0" + min) + ":" + (sec > 9 ? sec : "0" + sec);
+                clearTimeout(t);
                 alert(`Hooray! You solved the puzzle in ${headerInfoTime.textContent} and ${counterMoves} moves!`);
             }
         }, 300);
@@ -200,10 +208,7 @@ buttonLeft.addEventListener('click', () => {
 
 })
 
-buttonLeftCenter.addEventListener('click', () => {
 
-
-})
 
 function findCoordinatesByNumber(number, cellMatrix) {
     for (let y = 0; y < cellMatrix.length; y++) {
@@ -276,7 +281,7 @@ const isWon = (matrix) => {
     }
 
     return true;
-}
+};
 
 
 function tick() {
@@ -285,45 +290,63 @@ function tick() {
         sec = 0;
         min++;
     }
-}
+};
 
 function add() {
     tick();
     headerInfoTime.textContent = 'Time : ' + (min > 9 ? min : "0" + min)
         + ":" + (sec > 9 ? sec : "0" + sec);
     timer();
-}
+};
 
 function timer() {
     t = setTimeout(add, 1000);
-}
+};
 
 // timer();
 // buttonLeft.onclick = timer;
-// buttonLeftCenter.onclick = function () {
-//     clearTimeout(t);
-// }
+buttonLeftCenter.onclick = function () {
+    console.log('t', t);
+    clearTimeout(t);
+    isStopped = true;
+};
 
 
-// buttonLeft.onclick = function () {
-//     headerInfoTime.textContent = 'Time:' + '00:00';
-//     seconds = 0; minutes = 0;
-
-// }
+buttonLeft.onclick = function () {
+    clearTimeout(t);
+    // seconds = 0; minutes = 0;
+    resetTime();
+    isStopped = false;
+    // headerInfoTime.textContent = 'Time:' + '00:00';
+    // timer();
+};
 
 function resetTime() {
     headerInfoTime.textContent = 'Time :' + '00:00';
-    seconds = 0; minutes = 0;
+    sec = 0; min = 0;
 };
 
-function soundClick() {
-    var audio = new Audio(); // Создаём новый элемент Audio
-    audio.src = 'click.mp3'; // Указываем путь к звуку "клика"
-    audio.autoplay = true; // Автоматически запускаем
+
+
+sound.addEventListener('click', () => {
+    if (saundStatus) {
+        setSoundValue(0);
+        saundStatus = !saundStatus;
+        sound.innerText = 'On sound';
+    } else {
+        setSoundValue(1);
+        saundStatus = !saundStatus;
+        sound.innerText = 'Off sound';
+    }
+});
+
+function setSoundValue(value){
+    audio.volume = value;
 };
 
-function soundStop(){
-    audio.volume = 0;
-};
+
+
+
+
 
 
