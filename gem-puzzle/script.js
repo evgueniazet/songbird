@@ -63,11 +63,6 @@ let isStopped = false;
 
 
 
-
-
-
-go
-
 document.body.append(wrapper);
 
 wrapper.appendChild(header);
