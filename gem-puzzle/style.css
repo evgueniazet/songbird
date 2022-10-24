@@ -1,0 +1,86 @@
+.wrapper {
+    height: 50vh;
+    width: 50vw;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.header__info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.header__info_time {
+    margin-left: 20px;
+}
+
+.header__menu_button-left,
+.header__menu_button-left-center,
+.header__menu_button-right-center,
+.header__menu_button-right {
+    display: flex;
+    align-items: center;
+    background-color: #16797e;
+    border-radius: 3px;
+    color: #ffffff;
+    margin-left: 10px;
+    height: 30px;
+}
+
+.header__menu_button-left-center {
+    background-color: #6d7474;
+}
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #0bcee3;
+    margin-top: 20px;
+    border: 1px solid;
+    height: 50vw;
+    width: 50vw;
+}
+
+.game__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 25%;
+    border: 1px solid;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #404cbd;
+    cursor: pointer;
+    font-size: 50px;
+    color: #ffffff
+}
+
+.game__cell_empty {
+    background-color: #0bcee3;
+}
+
+
+.game__cell_number {
+    color: #ffffff;
+    font-size: 60px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__selected-size {
+    margin-top: 20px;
+}
+
+.footer__settings {
+    margin-top: 20px;
+}
