@@ -1,6 +1,6 @@
 .wrapper {
     height: 50vh;
-    width: 50vw;
+    /* width: 50vw; */
 }
 
 .header__menu {
@@ -19,21 +19,42 @@
     margin-left: 20px;
 }
 
+
+
 .header__menu_button-left,
 .header__menu_button-left-center,
 .header__menu_button-right-center,
 .header__menu_button-right {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #16797e;
     border-radius: 3px;
     color: #ffffff;
     margin-left: 10px;
-    height: 30px;
+    height: 9vh;
+    width: 14vw;
+    font-size: 23px;
 }
 
 .header__menu_button-left-center {
     background-color: #6d7474;
+}
+
+.header__info_moves {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.header__info_time {
+    font-size: 30px;
+
+}
+
+.game__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .game {
@@ -42,8 +63,10 @@
     background-color: #0bcee3;
     margin-top: 20px;
     border: 1px solid;
-    height: 50vw;
-    width: 50vw;
+    height: 55vw;
+    width: 55vw;
+
+
 }
 
 .game__cell {
@@ -57,7 +80,7 @@
     box-sizing: border-box;
     background-color: #404cbd;
     cursor: pointer;
-    font-size: 50px;
+    font-size: 55px;
     color: #ffffff
 }
 
@@ -83,4 +106,99 @@
 
 .footer__settings {
     margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .header__menu_button-left,
+    .header__menu_button-left-center,
+    .header__menu_button-right-center,
+    .header__menu_button-right {
+
+        font-size: 19px;
+    }
+
+    .header__info_time {
+        font-size: 20px;
+    }
+
+    .header__info_moves {
+        font-size: 20px;
+    }
+
+    .game__cell {
+        font-size: 30px;
+    }
+}
+
+
+@media (max-width: 538px) {
+
+    .header__menu_button-left,
+    .header__menu_button-left-center,
+    .header__menu_button-right-center,
+    .header__menu_button-right {
+
+        font-size: 12px;
+        height: 4vh;
+
+
+    }
+
+    
+
+    .game__cell {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .header__menu_button-left,
+    .header__menu_button-left-center,
+    .header__menu_button-right-center,
+    .header__menu_button-right {       
+        height: 5vh;
+
+    }
+
+    
+
+    .game__cell {
+        font-size: 20px;
+    }
+}
+
+
+
+@media (max-width: 320px) {
+
+    .header__menu_button-left,
+    .header__menu_button-left-center,
+    .header__menu_button-right-center,
+    .header__menu_button-right {
+
+        height: 7vh;
+        width: 15vw;
+        font-size: 10px;
+    }
+
+    .header__info_time {
+        font-size: 15px;
+    }
+
+    .header__info_moves {
+        font-size: 15px;
+    }
+
+    .game {
+
+        height: 70vw;
+        width: 70vw;
+    }
+
+    .game__cell {
+                font-size: 22px;
+    }
+
 }

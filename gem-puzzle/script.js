@@ -5,8 +5,12 @@ let headerInfo = document.createElement('div');
 let headerInfoMoves = document.createElement('span');
 let headerInfoTime = document.createElement('span');
 
-let info = document.createElement('div');
+let sound = document.createElement('button');
+headerInfo.appendChild(sound);
+sound.classList.add('header__info_sound');
+sound.innerText = 'Off/On sound';
 
+let info = document.createElement('div');
 
 
 let buttonLeft = document.createElement('button');
@@ -33,6 +37,7 @@ let footerSettings = document.createElement('div');
 let footerSettingsSignature = document.createElement('span');
 let footerSettingsSize = document.createElement('span');
 const game = document.createElement('div');
+const gameWrapper = document.createElement('div');
 
 const rightCellMatrix = [
     [1, 2, 3, 4],
@@ -81,7 +86,8 @@ headerMenu.appendChild(buttonRight);
 buttonRight.appendChild(buttonRightText);
 buttonRightText.append('Results');
 
-wrapper.appendChild(game);
+gameWrapper.appendChild(game);
+wrapper.appendChild(gameWrapper);
 
 wrapper.appendChild(footer);
 footer.appendChild(footerSelectedSize);
@@ -102,6 +108,7 @@ buttonRight.classList.add('header__menu_button-right');
 headerInfo.classList.add('header__info');
 headerInfoTime.classList.add('header__info_time');
 headerInfoMoves.classList.add('header__info_moves');
+gameWrapper.classList.add('game__wrapper');
 game.classList.add('game');
 footer.classList.add('footer');
 footerSelectedSize.classList.add('footer__selected-size')
@@ -111,6 +118,12 @@ footerSettingsSize.classList.add('footer__settings_size');
 let counterMoves = 0;
 
 shuffleMatrix(cellMatrix);
+
+let audio = new Audio();
+audio.preload = 'auto';
+audio.src = '../gem-puzzle/audio/knopka.mp3';
+
+
 
 
 const renderMatrix = (matrix, targetElement) => {
@@ -152,15 +165,23 @@ const renderCell = (event) => {
     const emptycellCoords = findCoordinatesByNumber(emptyCell, cellMatrix);
     const isValid = isValidForSwap(cellCoords, emptycellCoords);
 
+
+
     if (isValid) {
         swap(cellCoords, emptycellCoords, cellMatrix);
         renderMatrix(cellMatrix, game);
+        audio.play();
         counterMoves = counterMoves + 1;
         headerInfoMoves.innerHTML = `Moves: ${counterMoves}`;
 
+        if (counterMoves == 1) {
+            timer();
+        }
+
         setTimeout(() => {
             if (isWon(cellMatrix)) {
-                alert(`Hooray! You solved the puzzle in ##:## and ${counterMoves} moves!`);
+                headerInfoTime.textContent = + (min > 9 ? min : "0" + min) + ":" + (sec > 9 ? sec : "0" + sec);
+                alert(`Hooray! You solved the puzzle in ${headerInfoTime.textContent} and ${counterMoves} moves!`);
             }
         }, 300);
     }
@@ -176,6 +197,12 @@ buttonLeft.addEventListener('click', () => {
     headerInfoMoves.innerHTML = `Moves: ${counterMoves}`;
     shuffleMatrix(cellMatrix);
     renderMatrix(cellMatrix, game);
+
+})
+
+buttonLeftCenter.addEventListener('click', () => {
+
+
 })
 
 function findCoordinatesByNumber(number, cellMatrix) {
@@ -256,27 +283,47 @@ function tick() {
     sec++;
     if (sec >= 60) {
         sec = 0;
-        min++;      
+        min++;
     }
 }
+
 function add() {
     tick();
-    headerInfoTime.textContent ='Time : ' + (min > 9 ? min : "0" + min)
+    headerInfoTime.textContent = 'Time : ' + (min > 9 ? min : "0" + min)
         + ":" + (sec > 9 ? sec : "0" + sec);
     timer();
 }
+
 function timer() {
     t = setTimeout(add, 1000);
 }
 
-timer();
-start.onclick = timer;
-stop.onclick = function () {
-    clearTimeout(t);
+// timer();
+// buttonLeft.onclick = timer;
+// buttonLeftCenter.onclick = function () {
+//     clearTimeout(t);
+// }
 
-    
-}
-reset.onclick = function () {
-    headerInfoTime.textContent ='Time:' + '00:00';
+
+// buttonLeft.onclick = function () {
+//     headerInfoTime.textContent = 'Time:' + '00:00';
+//     seconds = 0; minutes = 0;
+
+// }
+
+function resetTime() {
+    headerInfoTime.textContent = 'Time :' + '00:00';
     seconds = 0; minutes = 0;
-}
+};
+
+function soundClick() {
+    var audio = new Audio(); // Создаём новый элемент Audio
+    audio.src = 'click.mp3'; // Указываем путь к звуку "клика"
+    audio.autoplay = true; // Автоматически запускаем
+};
+
+function soundStop(){
+    audio.volume = 0;
+};
+
+
