@@ -114,7 +114,7 @@ footerSettingsSignature.classList.add('footer__settings_signature');
 footerSettingsSize.classList.add('footer__settings_size');
 let counterMoves = 0;
 
-// shuffleMatrix(cellMatrix);
+shuffleMatrix(cellMatrix);
 
 let audio = new Audio();
 audio.preload = 'auto';
@@ -189,6 +189,11 @@ const renderCell = (event) => {
         }, 300);
     }
 };
+
+// cellMatrix.value = localStorage.getItem('cellMatrix');
+// cellMatrix.oninput = () => {
+//   localStorage.setItem('cellMatrix', cellMatrix.value)
+// };
 
 
 
