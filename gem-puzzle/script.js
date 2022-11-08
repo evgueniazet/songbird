@@ -177,7 +177,7 @@ const renderCell = (event) => {
 
         if (isStopped) {
             timer();
-            isStopped = !isStopped; 
+            isStopped = !isStopped;
         }
 
         setTimeout(() => {
@@ -188,12 +188,21 @@ const renderCell = (event) => {
             }
         }, 300);
     }
+
+
+
 };
 
-// cellMatrix.value = localStorage.getItem('cellMatrix');
-// cellMatrix.oninput = () => {
-//   localStorage.setItem('cellMatrix', cellMatrix.value)
-// };
+// localStorage.setItem('cellMatrix', JSON.stringify(cellMatrix));
+// let d = localStorage.getItem('cellMatrix');
+// d = JSON.parse(d);
+// console.log('d', d);
+localStorage.setItem('cellMatrix', cellMatrix);
+localStorage.getItem('cellMatrix');
+
+console.log('cellMatrix', cellMatrix);
+
+
 
 
 
@@ -340,7 +349,7 @@ sound.addEventListener('click', () => {
     }
 });
 
-function setSoundValue(value){
+function setSoundValue(value) {
     audio.volume = value;
 };
 
