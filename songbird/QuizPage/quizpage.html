@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/bird_icon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../QuizPage/quizpage.css">
+  <title>songbird</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <section class="header">
+      <div class="header-logo">Song Bird</div>
+      <span class="score">Score : 0</span>
+    </section>
+    <nav class="questions">
+      <div id="0" class="question">Разминка</div>
+      <div id="1" class="question">Воробьиные</div>
+      <div id="2" class="question">Лесные птицы</div>
+      <div id="3" class="question">Певчие птицы</div>
+      <div id="4" class="question">Хищные птицы</div>
+      <div id="5" class="question">Морские птицы</div>
+    </nav>
+    <section class="current-question">
+      <img class="current-question-img" src="img/bird.jpg" alt="bird" />
+      <div class="current-question-content">
+        <span class="current-question-title">******</span>
+        <span class="current-question-line"></span>
+        <audio class="current-question-audio" src="#" controls></audio>
+      </div>
+    </section>
+    <div class="container">
+      <section class="answers">
+        <button class="answer">
+          <div class="answer-marker">   
+          </div>
+          <span class="answer-text">Ворон</span>
+        </button>
+        <button class="answer">
+          <div class="answer-marker">
+          </div>
+          <span class="answer-text">Журавль</span>
+        </button>
+        <button class="answer">
+          <div class="answer-marker">        
+          </div>
+          <span class="answer-text">Ласточка</span>
+        </button>
+        <button class="answer ">
+          <div class="answer-marker">           
+          </div>
+          <span class="answer-text">Козодой</span>
+        </button>
+        <button class="answer">
+          <div class="answer-marker">            
+          </div>
+          <span class="answer-text">Кукушка</span>
+        </button>
+        <button class="answer">
+          <div class="answer-marker">           
+          </div>
+          <span class="answer-text">Синица</span>
+        </button>
+      </section>
+
+      <section class="description-default">
+        <p class="description-default-text">Послушайте плеер.
+          Выберите птицу из списка.</p>
+      </section>
+
+      <section class="description-card">
+        <div class="description-content">
+          <img class="description-img" src="#" />
+          <div class="description-wrapper">
+            <span class="description-title">Ворон</span>
+            <span class="description-english-title">Corvus corax</span>
+            <audio class="description-audio" src="#" controls></audio>
+          </div>
+        </div>
+        <div class="description-text">
+          Ворон – крупная птица. Длина тела достигает 70 сантиметров, размах крыльев – до полутора метров. Вороны
+          населяют окрестности Тауэра. В Англии бытует поверье, что в день, когда черные вороны улетят от Тауэра,
+          монархия рухнет.
+        </div>
+      </section>
+
+    </div>
+    <button class="next-level">Next Level</button>
+
+  </div>
+
+</body>
+
+<script type="module" src="quizpage.js"></script>
+
+</html>
