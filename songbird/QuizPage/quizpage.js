@@ -1,11 +1,6 @@
 import { birdsData } from './data.js';
 
 const tabs = [...document.querySelectorAll('.question')];
-// let answerButtons = [...document.querySelectorAll('.answer')];
-// const answers = document.querySelector('.answers');
-// const answersClone = answers.cloneNode(true);
-// let answerButtons = [...document.querySelectorAll('.answer')];
-// const answerText = [...document.querySelectorAll('.answer-text')];
 const descriptionDefault = document.querySelector('.description-default');
 const descriptionCard = document.querySelector('.description-card');
 const descriptionTitle = document.querySelector('.description-title');
@@ -95,7 +90,6 @@ const updateAnswers = (activeTab, correctAnswer, data) => {
         nextLevelButton.classList.add('next-level-active');
 
         answer.classList.add('answer-correct');
-        // answer.classList.remove('answer-wrong');
 
         currentImg.src = birdsData[activeTab][idx].image;
         currentTitle.innerText = birdsData[activeTab][idx].name;
@@ -153,9 +147,6 @@ nextLevelButton.addEventListener('click', () => {
   }
 
 
-  // tabs[indexNextButton].click();
-  // activeTabIndex = activeTabIndex + 1;
-
   updateTabs(activeTabIndex);
   const randomCorrectAnswer = createAnswer(birdsData, activeTabIndex);
   console.log('randomCorrectAnswer', randomCorrectAnswer.name);
@@ -163,8 +154,3 @@ nextLevelButton.addEventListener('click', () => {
   updateDescription(null, false);
   resetCurrentQuestion(randomCorrectAnswer.audio);
 });
-
-
-// localStorage.setItem('user', user);
-
-// localStorage.setItem('user', JSON.stringify(user));
